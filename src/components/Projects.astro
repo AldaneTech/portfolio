@@ -1,28 +1,104 @@
 ---
+import GitHub from "./icons/GitHub.astro"
+import PHP from "./icons/Php.astro"
+import PostgreSQL from "./icons/Postgresql.astro"
+
+import LinkButton from "./LinkButton.astro"
+import Link from "./icons/Link.astro"
+import Document from "./icons/Document.astro"
+import Tex from "./icons/Tex.astro"
+
+const TAGS = {
+    PHP: {
+    name: "PHP",
+    class: "bg-[#222433] text-white",
+    icon: PHP,
+  },
+  PostgreSQL: {
+    name: "PostgreSQL",
+    class: "bg-[#003159] text-white",
+    icon: PostgreSQL,
+  },
+  Tex: {
+    name: "LaTeX",
+    class: "bg-lime-900 text-white",
+    icon: Tex,
+  },
+}
+
 const PROJECTS = [
     {
-        title: "Project 1",
-        description: "TODO",
+        title: "Smart Cities - Web platform with real-time data",
+        description: "Platform designed to provide important information obtained from IoT devices, facilitating decision making in urban environments.",
         link: "",
+        info: "https://www.iotsens.com/en/city/",
         github:"",
-        image: "https://placehold.co/300x200",
-        tags: ["React", "Tailwind CSS", "TypeScript"]
+        image: "/src/assets/iotsens.webp",
+        documentation: "/documents/tfg.pdf",
+        tags: [TAGS.PHP, TAGS.PostgreSQL, TAGS.Tex],
+        id: "iotsens",
     }
 ]
 ---
-{
-    PROJECTS.map(project => (
-        <article>
-            <h3>{ project.title }</h3>
-            <p>{ project.description }</p>
-            <ul>
-                {
-                  project.tags.map(tag => (
-                    <li>{ tag }</li>
-                  ))
-                }
-            </ul>
-            <img src={ project.image } alt={`Project screenshot ${project.image}`}/>
+
+<div class="flex flex-col gap-y-16">
+    {
+      PROJECTS.map(({ id, image, title, description, tags, link, info, github, documentation }) => (
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0" id={id}>
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+            </div>
+          </div>
+    
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-row mb-2 gap-x-2">
+                  {tags.map((tag) => (
+                    <li>
+                      <span
+                        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                      >
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+        
+              <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                  {github && (
+                    <LinkButton href={github}>
+                      <GitHub class="size-6" />
+                      Code
+                    </LinkButton>
+                  )}
+                  {link && (
+                    <LinkButton href={link}>
+                      <Link class="size-4" />
+                      Preview
+                    </LinkButton>
+                  )}
+                  {info && (
+                    <LinkButton href={info}>
+                      <Link class="size-4" />
+                      Information
+                    </LinkButton>
+                  )}
+                  {documentation && (
+                    <LinkButton href={documentation}>
+                      <Document class="size-5" />
+                      Document
+                    </LinkButton>
+                  )}
+                </footer>
+            </div>
+          </div>
         </article>
-    ))
-}
+      ))
+    }
+  </div>

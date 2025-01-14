@@ -9,60 +9,45 @@ import Layout from '../layouts/Layout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import Code from '../components/icons/Code.astro';
+import TitleSection from '../components/TitleSection.astro';
 import Projects from '../components/Projects.astro';
+import Hero from '../components/Hero.astro';
+import Education from '../components/Education.astro';
+import Bag from '../components/icons/Bag.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Aldane's portfolio | Full Stack Developer" description="">
+<Layout title="Aldane's Portfolio | Full Stack Developer" description="">
 	<main class="px-4">
-		<SectionContainer class="py-20 md:py-40 pb-32">
-			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-2 pb-6 lg:pb-10">Hey, I'm Aldane 
-				<div class="flex justify-center items-center">
-					<a href="mailto:contact@aldane.net" class="flex justify-center items-center"> 
-						<Badge>Ready to work</Badge>
-					</a>
-				</h1>
-			</div>
-			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-				<span class="text-yellow-200/90">Computer Engineer and Full Stack Developer</span> from Madrid, Spain 🇪🇸. Specialised in microservices development.
-			</h2>
-
-			<nav>
-				<ul class="flex gap-4 mt-6 flex-wrap">
-					<li>
-						<Social href="https://github.com/AldaneTech">
-							<GitHubIcon class="size-4 md:size-6"/>
-							GitHub
-						</Social>
-					</li>
-
-					<li>
-						<Social href="mailto:contact@aldane.net">
-							<MailIcon class="size-4 md:size-6"/>
-							Contact me
-						</Social>
-					</li>
-				</ul>
-			</nav>
-
+		<SectionContainer id="home" class="py-16 md:py-36">
+			<Hero />
 		</SectionContainer>
+		<div class="space-y-24">
+			<SectionContainer id="experience">
+				<TitleSection>
+					<Briefcase class="size-8"/>
+					Work experience
+				</TitleSection>
+				<Experience />
+			</SectionContainer>
 
-		<SectionContainer id="experience">
-			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
-				<Briefcase class="size-7"/>
-				Work experience
-			</h2>
-			<Experience />
-		</SectionContainer>
+			<SectionContainer id="projects">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+					<Code class="size-7"/>
+					Projects
+				</h2>
+				<Projects />
+			</SectionContainer>
 
-		<SectionContainer id="projects">
-			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
-				<Code class="size-7"/>
-				Projects
-			</h2>
-			<Projects />
-		</SectionContainer>
+			<SectionContainer id="education">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+					<Bag class="size-8"/>
+					Education
+				</h2>
+				<Education />
+			</SectionContainer>
+		</div>
 	</main>
 </Layout>

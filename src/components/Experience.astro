@@ -6,25 +6,29 @@ const EXPERIENCE = [
         date: "April 2023 - Current",
         title: "Full Stack Developer",
         description: "TODO",
+        company: "Indra Systems",
         link: "#",
     },
     {
         date: "July 2022 - March 2023",
         title: "Software Developer",
-        description: "TODO",
+        company: "Clever Shopping Group",
+        description: "I developed automated solutions to integrate the product offering in multiple sales channels such as Amazon, PCComponents and Carrefour (using C# for communication with APIs and SQL Server to read and update our catalog). In addition, we host the applications on AWS to ensure scalability and security.",
     },
     {
         date: "February 2022 - May 2022",
         title: "Web Developer",
-        description: "Get started with dozens of web components and interactive elements built on top of Tailwind CSS.",
+        company: "IOTsens",
+        description: "In this company I did my final degree work developing a web application to display data collected by IoT devices. I used PHP and PostgreSQL to implement the solution, focusing on designing an efficient and accessible web interface for users. You can find the final project here.",
+        link: "#iotsens"
     },
 ]
 ---
 
-<ol class="relative border-s border-gray-200 ml-3">   
+<ol class="relative mt-16">    
     {
         EXPERIENCE.map(experience => (
-          <li class="mb-10 ms-4">
+          <li>
                 <ExperienceItem { ...experience } />
           </li>
         ))
