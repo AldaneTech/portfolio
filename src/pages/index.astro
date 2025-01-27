@@ -1,8 +1,7 @@
 ---
-import Badge from '../components/Badge.astro';
+import AboutMe from '../components/AboutMe.astro';
 import Experience from '../components/Experience.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import MailIcon from '../components/icons/Mail.astro';
+import ProfileCheck from '../components/icons/ProfileCheck.astro';
 
 import Social from '../components/Social.astro';
 import Layout from '../layouts/Layout.astro';
@@ -47,6 +46,14 @@ import Bag from '../components/icons/Bag.astro';
 					Education
 				</h2>
 				<Education />
+			</SectionContainer>
+
+			<SectionContainer id="about">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+					<ProfileCheck class="size-8"/>
+					About me
+				</h2>
+				<AboutMe />
 			</SectionContainer>
 		</div>
 	</main>
